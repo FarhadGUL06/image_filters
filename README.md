@@ -45,4 +45,5 @@ python3 converter.py png images/ppm_after/<file_name>.ppm images/output/<file_na
 
 
 Read and write ppm file
+
 [1] https://stackoverflow.com/questions/2693631/read-ppm-file-and-store-it-in-an-array-coded-with-c
