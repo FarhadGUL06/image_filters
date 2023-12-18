@@ -44,6 +44,19 @@ python3 converter.py png images/ppm_after/<file_name>.ppm images/output/<file_na
 ```
 
 
+# Use of apply.py
+
+```
+apply.py -> run all steps from above using:
+
+Usage: python3 apply.py <cpp_bin> <file_name>
+
+Example: Usage: python3 apply.py serial flower1
+
+```
+
+
+
 Read and write ppm file
 
 [1] https://stackoverflow.com/questions/2693631/read-ppm-file-and-store-it-in-an-array-coded-with-c
