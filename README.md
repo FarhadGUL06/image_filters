@@ -55,6 +55,8 @@ Example: Usage: python3 apply.py serial flower1
 
 ```
 
+rename 's/\.jpg$/.png/' *.jpg
+
 
 
 Read and write ppm file

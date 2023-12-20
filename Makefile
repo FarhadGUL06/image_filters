@@ -6,3 +6,6 @@ run:
 
 clean:
 	rm -f serial
+	rm -f ./images/ppm_before/*
+	rm -f ./images/ppm_after/*
+	rm -f ./images/output/*

@@ -42,7 +42,7 @@ PPMImage *readPPM(const char *filename) {
 
     ungetc(c, fp);
     // read image size information
-    if (fscanf(fp, "%d %d", &img->x, &img->y) != 2) {
+    if (fscanf(fp, "%d %d", &img->height, &img->width) != 2) {
         fprintf(stderr, "Invalid image size (error loading '%s')\n", filename);
         exit(1);
     }
@@ -63,7 +63,7 @@ PPMImage *readPPM(const char *filename) {
     while (fgetc(fp) != '\n')
         ;
     // memory allocation for pixel data
-    img->data = (PPMPixel *)malloc(img->x * img->y * sizeof(PPMPixel));
+    img->data = (PPMPixel *)malloc(img->height * img->width * sizeof(PPMPixel));
 
     if (!img) {
         fprintf(stderr, "Unable to allocate memory\n");
@@ -71,7 +71,7 @@ PPMImage *readPPM(const char *filename) {
     }
 
     // read pixel data from file
-    if (fread(img->data, 3 * img->x, img->y, fp) != img->y) {
+    if (fread(img->data, 3 * img->height, img->width, fp) != img->width) {
         fprintf(stderr, "Error loading image '%s'\n", filename);
         exit(1);
     }
@@ -94,12 +94,28 @@ void writePPM(const char *filename, PPMImage *img) {
     fprintf(fp, "P6\n");
 
     // image size
-    fprintf(fp, "%d %d\n", img->x, img->y);
+    fprintf(fp, "%d %d\n", img->height, img->width);
 
     // rgb component depth
     fprintf(fp, "%d\n", RGB_COMPONENT_COLOR);
 
     // pixel data
-    fwrite(img->data, 3 * img->x, img->y, fp);
+    fwrite(img->data, 3 * img->height, img->width, fp);
     fclose(fp);
+}
+
+int max(int a, int b) {
+    return a > b ? a : b;
+}
+
+int min(int a, int b) {
+    return a < b ? a : b;
+}
+
+double fmax(double a, double b) {
+    return a > b ? a : b;
+}
+
+double fmin(double a, double b) {
+    return a < b ? a : b;
 }
