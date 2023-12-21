@@ -62,3 +62,4 @@ rename 's/\.jpg$/.png/' *.jpg
 Read and write ppm file
 
 [1] https://stackoverflow.com/questions/2693631/read-ppm-file-and-store-it-in-an-array-coded-with-c
+[2] https://lodev.org/cgtutor/filtering.html

@@ -13,8 +13,9 @@ typedef struct {
 } PPMImage;
 
 // Headers for functions
-PPMImage *readPPM(const char *filename);
-void writePPM(const char *filename, PPMImage *img);
+PPMImage *apply_filter(PPMImage *image, double **filter, int filterHeight, int filterWidth, double factor, double bias);
+PPMImage *read_PPM(const char *filename);
+void write_PPM(const char *filename, PPMImage *img);
 int max(int a, int b);
 int min(int a, int b);
 double fmax(double a, double b);

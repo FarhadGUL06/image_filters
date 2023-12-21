@@ -1,6 +1,33 @@
 #include "image_filters.hpp"
 
-PPMImage *readPPM(const char *filename) {
+PPMImage *apply_filter(PPMImage *image, double **filter, int filterHeight, int filterWidth, double factor, double bias) {
+    PPMImage *result = (PPMImage *) malloc(sizeof(PPMImage));
+    result->width = image->width;
+    result->height = image->height;
+    result->data = (PPMPixel *) malloc(result->width * result->height * sizeof(PPMPixel));
+    for (int i = 0; i < image->height; i++) {
+        for (int j = 0; j < image->width; j++) {
+            double red = 0;
+            double green = 0;
+            double blue = 0;
+            for (int k = 0; k < filterHeight; k++) {
+                for (int l = 0; l < filterWidth; l++) {
+                    int index_i = (i - filterHeight / 2 + k + image->height) % image->height;
+                    int index_j = (j - filterWidth / 2 + l + image->width) % image->width;
+                    red += image->data[index_j * image->height + index_i].red * filter[k][l];
+                    green += image->data[index_j * image->height + index_i].green * filter[k][l];
+                    blue += image->data[index_j * image->height + index_i].blue * filter[k][l];
+                }
+            }
+            result->data[j * image->height + i].red = min(max(int(factor * red + bias), 0), 255);
+            result->data[j * image->height + i].green = min(max(int(factor * green + bias), 0), 255);
+            result->data[j * image->height + i].blue = min(max(int(factor * blue + bias), 0), 255);
+        }
+    }
+    return result;
+}
+
+PPMImage *read_PPM(const char *filename) {
     char buff[16];
     PPMImage *img;
     FILE *fp;
@@ -80,7 +107,7 @@ PPMImage *readPPM(const char *filename) {
     return img;
 }
 
-void writePPM(const char *filename, PPMImage *img) {
+void write_PPM(const char *filename, PPMImage *img) {
     FILE *fp;
     // open file for output
     fp = fopen(filename, "wb");
