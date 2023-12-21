@@ -1,5 +1,5 @@
 build:
-	g++ -std=c++11 -o serial serial.cpp image_filters.hpp ppm_io.cpp
+	g++ -std=c++11 -o serial serial.cpp image_filters.hpp image_filters.cpp
 
 run:
 	./serial ./images/ppm/flower1.ppm ./images/output
