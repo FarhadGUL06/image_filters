@@ -1,6 +1,6 @@
 # image_filters
 
-# Images hierarchy
+## Images hierarchy
 
 ```
 ./images/
@@ -15,7 +15,7 @@
 ```
 
 
-# Converter usage:
+## Converter usage:
 
 ```
 python3 converter.py <type> <input_file> <output_file>
@@ -44,18 +44,57 @@ python3 converter.py png images/ppm_after/<file_name>.ppm images/output/<file_na
 ```
 
 
-# Use of apply.py
+## Use of apply.py
 
 ```
 apply.py -> run all steps from above using:
 
-Usage: python3 apply.py <cpp_bin> <file_name>
-
-Example: Usage: python3 apply.py serial flower1
+Usage: python3 apply.py <cpp_bin> <number_of_images>
+Example: Usage: python3 apply.py serial 5
 
 ```
 
+## Input
+
+The program can be run by executing:
+
+```
+<cpp_bin> <number_of_images>
+```
+
+It will take the first <number_of_images> as input images.
+Next, it will read the filters that should be applied to the images.
+Input example:
+
+```
+3   -> number of filters
+1   -> filter number 1
+2   -> filter number 2
+3   -> filter number 3
+```
+
+All filters will be applied to all images.
+
+Filter - ID table:
+
+| ID    | Filter Type              |
+| :---: | :----------------------: |
+| 0     | blur_PPM                 |
+| 1     | gaussian_blur_PPM        |
+| 2     | motion_blur_PPM          |
+| 3     | sharpen_PPM              |
+| 4     | extreme_sharpen_PPM      |
+| 5     | find_edges_PPM           |
+| 6     | emboss_PPM               |
+| 7     | extreme_emboss_PPM       |
+
+
+Convert any jpg image to png before:
+
+```
 rename 's/\.jpg$/.png/' *.jpg
+
+```
 
 
 

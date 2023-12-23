@@ -10,7 +10,7 @@ def png_to_ppm(input_path, output_path):
             image = image.convert('RGB')
         # Save as PPM
         image.save(output_path, 'PPM')
-        print(f"Conversion successful. Image saved to {output_path}")
+        #print(f"Conversion successful. Image saved to {output_path}")
     except Exception as e:
         print(f"Error: {e}")
 
@@ -20,7 +20,7 @@ def ppm_to_png(input_path, output_path):
         image = Image.open(input_path)
         # Save as PNG
         image.save(output_path, 'PNG')
-        print(f"Conversion successful. Image saved to {output_path}")
+        #print(f"Conversion successful. Image saved to {output_path}")
     except Exception as e:
         print(f"Error: {e}")
 
