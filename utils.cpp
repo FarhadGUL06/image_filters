@@ -31,6 +31,8 @@ PPMImage *apply_filter(PPMImage *image, double **filter, int filterHeight, int f
             result->data[j * image->height + i].blue = min(max((int)(factor * blue + bias), 0), 255);
         }
     }
+    free(image->data);
+    free(image);
     return result;
 }
 
