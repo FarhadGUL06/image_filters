@@ -9,7 +9,9 @@ void read_all_images(PPMImage **images, int number_of_images) {
 }
 
 void write_all_images(PPMImage **images, int number_of_images) {
-    for (int i = 0; i < number_of_images; i++) {
+    int i;
+#pragma omp parallel for private(i) shared(images)
+    for (i = 0; i < number_of_images; i++) {
         char filename[50];
         sprintf(filename, "images/ppm_after/image%d.ppm", i);
         write_PPM(filename, images[i]);
@@ -41,8 +43,12 @@ PPMImage *(**read_all_filters(int *number_of_filters))(PPMImage *) {
 void apply_all_filters(PPMImage **images, int number_of_images,
                        PPMImage *(**to_apply)(PPMImage *),
                        int number_of_filters) {
-    for (int i = 0; i < number_of_images; i++) {
-        for (int j = 0; j < number_of_filters; j++) {
+    int i;
+#pragma omp parallel for private(i) shared(images, to_apply)
+    for (i = 0; i < number_of_images; i++) {
+        int j;
+        //#pragma omp parallel for private(j) shared(images, to_apply)
+        for (j = 0; j < number_of_filters; j++) {
             images[i] = to_apply[j](images[i]);
         }
     }
