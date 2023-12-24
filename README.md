@@ -109,7 +109,7 @@ cat ./filters/test00.txt | python apply.py mpi 16 8
 
 
 
-Read and write ppm file
+## References
 
 [1] https://stackoverflow.com/questions/2693631/read-ppm-file-and-store-it-in-an-array-coded-with-c
 
