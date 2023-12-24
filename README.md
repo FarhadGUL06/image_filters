@@ -112,4 +112,7 @@ cat ./filters/test00.txt | python apply.py mpi 16 8
 Read and write ppm file
 
 [1] https://stackoverflow.com/questions/2693631/read-ppm-file-and-store-it-in-an-array-coded-with-c
+
 [2] https://lodev.org/cgtutor/filtering.html
+
+[3] https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve2d.html
