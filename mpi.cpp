@@ -37,8 +37,7 @@ void read_all_filters(int *number_of_filters, int *indeces) {
     }
 }
 
-void apply_all_filters(PPMImage **images, int start, int stop,
-                       int *to_apply,
+void apply_all_filters(PPMImage **images, int start, int stop, int *to_apply,
                        int number_of_filters) {
     for (int i = start; i < stop; i++) {
         for (int j = 0; j < number_of_filters; j++) {
@@ -58,8 +57,8 @@ int main(int argc, char *argv[]) {
     if (number_of_images < 0 || number_of_images > 50) {
         printf("Invalid number of images\n");
         return 1;
-    }    
-    
+    }
+
     PPMImage **images;
     images = (PPMImage **)malloc(sizeof(PPMImage *) * number_of_images);
     read_all_images(images, 0, number_of_images);
@@ -69,8 +68,6 @@ int main(int argc, char *argv[]) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);  // number of processes
 
     int number_of_images_per_process = number_of_images / size;
-
-
 
     int number_of_filters;
     int *to_apply;
@@ -93,10 +90,9 @@ int main(int argc, char *argv[]) {
     MPI_Barrier(MPI_COMM_WORLD);
     MPI_Bcast(&number_of_filters, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(to_apply, number_of_filters + 1, MPI_INT, 0, MPI_COMM_WORLD);
-    
+
     // Apply filters
     apply_all_filters(images, start, stop, to_apply, number_of_filters);
-
 
     write_all_images(images, start, stop);
     if (hasRest != 0) {
@@ -105,7 +101,8 @@ int main(int argc, char *argv[]) {
             int start = number_of_images - hasRest;
             int stop = start + 1;
             if (rank == current_rank) {
-                apply_all_filters(images, start, stop, to_apply, number_of_filters);
+                apply_all_filters(images, start, stop, to_apply,
+                                  number_of_filters);
                 write_all_images(images, start, stop);
             }
             current_rank++;

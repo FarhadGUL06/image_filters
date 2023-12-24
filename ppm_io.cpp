@@ -103,20 +103,3 @@ void write_PPM(const char *filename, PPMImage *img) {
     fwrite(img->data, 3 * img->height, img->width, fp);
     fclose(fp);
 }
-
-
-
-    // Arguments: input_file and output_file
-    /*if (argc != 3) {
-        printf("Usage: %s <input_file> <output_file>\n", argv[0]);
-        exit(1);
-    }
-
-    char *input_file = argv[1];
-    char *output_file = argv[2];
-    PPMImage *image;
-    image = read_PPM(input_file);
-    printf("Image size: %d x %d\n", image->width, image->height);
-    image = extreme_emboss_PPM(image);
-    write_PPM(output_file, image);
-    */

@@ -47,7 +47,7 @@ void apply_all_filters(PPMImage **images, int number_of_images,
 #pragma omp parallel for private(i) shared(images, to_apply)
     for (i = 0; i < number_of_images; i++) {
         int j;
-        //#pragma omp parallel for private(j) shared(images, to_apply)
+        // #pragma omp parallel for private(j) shared(images, to_apply)
         for (j = 0; j < number_of_filters; j++) {
             images[i] = to_apply[j](images[i]);
         }

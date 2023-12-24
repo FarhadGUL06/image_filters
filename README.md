@@ -50,8 +50,9 @@ python3 converter.py png images/ppm_after/<file_name>.ppm images/output/<file_na
 apply.py -> run all steps from above using:
 
 Usage: python3 apply.py <cpp_bin> <number_of_images>
-Example: Usage: python3 apply.py serial 5
 
+Example usage: 
+python3 apply.py serial 5 1
 ```
 
 ## Input
@@ -63,7 +64,8 @@ The program can be run by executing:
 ```
 
 It will take the first <number_of_images> as input images.
-Next, it will read the filters that should be applied to the images.
+Next, the number of threads / procceses and last, it will read 
+the filters that should be applied to the images.
 Input example:
 
 ```
@@ -94,6 +96,15 @@ Convert any jpg image to png before:
 ```
 rename 's/\.jpg$/.png/' *.jpg
 
+```
+
+## Run examples
+
+```
+cat ./filters/test00.txt | python apply.py serial 5 1
+cat ./filters/test00.txt | python apply.py pthread 16 8
+cat ./filters/test00.txt | python apply.py openmp 16 8
+cat ./filters/test00.txt | python apply.py mpi 16 8
 ```
 
 
