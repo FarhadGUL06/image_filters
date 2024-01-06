@@ -1,4 +1,8 @@
+#include <omp.h>
+
 #include "image_filters.hpp"
+
+int nr_threads;
 
 void read_all_images(PPMImage **images, int number_of_images) {
     for (int i = 0; i < number_of_images; i++) {
@@ -56,8 +60,8 @@ void apply_all_filters(PPMImage **images, int number_of_images,
 
 int main(int argc, char *argv[]) {
     // argv[1] - how many images to take
-    if (argc < 2) {
-        printf("Usage: ./serial <number_of_images>\n");
+    if (argc < 3) {
+        printf("Usage: ./openmp <number_of_images> <num_threads>\n");
         return 1;
     }
     const int number_of_images = atoi(argv[1]);
@@ -65,6 +69,10 @@ int main(int argc, char *argv[]) {
         printf("Invalid number of images\n");
         return 1;
     }
+
+    nr_threads = atoi(argv[2]);
+    omp_set_dynamic(0);
+    omp_set_num_threads(nr_threads);
 
     PPMImage **images =
         (PPMImage **)malloc(sizeof(PPMImage *) * number_of_images);

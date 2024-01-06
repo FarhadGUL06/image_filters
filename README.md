@@ -14,6 +14,27 @@
     └── <file_name>.ppm
 ```
 
+## Program hierarchy
+
+├── Makefile
+├── README.md
+├── apply.py -> apply CPP program with different purposes
+├── converter.py -> converts PNG to PPM and PPM to PNG
+├── filters -> filters used on images
+├── graphics
+│   |── images -> graphics for modifying number of images
+│   └── filters -> graphics for modifying number of filters
+├── image_filters.cpp -> all filter functions
+├── image_filters.hpp -> function definitions and constants
+├── mpi.cpp
+├── openmp.cpp
+├── ppm_io.cpp -> read / write an PPM image
+├── pthread.cpp
+├── rename.py -> renames an unlabed dataset to image0...X.png
+├── serial.cpp
+├── timer.py -> graphics generator based on time
+└── utils.cpp -> generic applyfilter function used by all filters
+
 
 ## Converter usage:
 
@@ -105,6 +126,33 @@ cat ./filters/test00.txt | python apply.py serial 5 1
 cat ./filters/test00.txt | python apply.py pthread 16 8
 cat ./filters/test00.txt | python apply.py openmp 16 8
 cat ./filters/test00.txt | python apply.py mpi 16 8
+```
+
+## Time Graphics generator
+
+Example usage:
+
+Usage: python3 timer.py <type> <cpp_bin> <number_of_images> <num_threads / procs>
+
+```
+python3 timer.py 1 mpi 50 16 -> evaluation on image number
+with the same filters using 16 processes
+
+python3 timer.py 2 mpi 1 16 -> evaluation on one image 
+with different number of filters using 16 processes.
+
+python3 timer.py 3 <any> 50 <any> -> runs first for all implementations
+and plot the results
+
+python3 timer.py 4 <any> 1 <any> -> runs second for all implementations
+and plot the results
+
+python3 timer.py 5 <any> 50 <any> -> runs the first (for changing number of images) 
+for best implementations
+
+python3 timer.py 6 <any> 1 <any> -> runs the second (for changing number of filters) 
+for best implementations
+
 ```
 
 
