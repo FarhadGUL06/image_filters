@@ -74,7 +74,7 @@ apply.py -> run all steps from above using:
 Usage: python3 apply.py <cpp_bin> <number_of_images>
 
 
-| CPP_BIN   | Filter Type              |
+| CPP_BIN   | Description              |
 | :-------: | :----------------------: |
 | serial    | Serial program           |
 | mpi       | MPI-based program        |
