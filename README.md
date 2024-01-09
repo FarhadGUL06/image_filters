@@ -68,7 +68,7 @@ python3 converter.py png images/ppm_after/<file_name>.ppm images/output/<file_na
 
 ## Use of apply.py
 
-```
+
 apply.py -> run all steps from above using:
 
 Usage: python3 apply.py <cpp_bin> <number_of_images>
@@ -83,6 +83,8 @@ Usage: python3 apply.py <cpp_bin> <number_of_images>
 
 
 Example usage: 
+
+```
 python3 apply.py serial 5 1
 ```
 
