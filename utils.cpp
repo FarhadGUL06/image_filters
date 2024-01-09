@@ -1,3 +1,4 @@
+
 #include "image_filters.hpp"
 
 PPMImage *apply_filter(PPMImage *image, double **filter, int filterHeight,

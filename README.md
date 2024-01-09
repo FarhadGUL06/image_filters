@@ -134,6 +134,15 @@ Example usage:
 
 Usage: python3 timer.py <type> <cpp_bin> <number_of_images> <num_threads / procs>
 
+| Type  | Description                                                                   |
+| :---: | :---------------------------------------------------------------------------: |
+| 1     | Basic analisys on different number of images on one implementation            |
+| 2     | Basic analisys on different number of filters on one implementation           |
+| 3     | Basic analisys on different number of images on all implementations           |
+| 4     | Basic analisys on different number of filters on all implementations          |
+| 5     | Run each best time for all implementations on different number of images      |
+| 6     | Run each best time for all implementations on different number of filters     |
+
 ```
 python3 timer.py 1 mpi 50 16 -> evaluation on image number
 with the same filters using 16 processes
