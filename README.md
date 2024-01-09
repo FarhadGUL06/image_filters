@@ -73,6 +73,15 @@ apply.py -> run all steps from above using:
 
 Usage: python3 apply.py <cpp_bin> <number_of_images>
 
+
+| CPP_BIN   | Filter Type              |
+| :-------: | :----------------------: |
+| serial    | Serial program           |
+| mpi       | MPI-based program        |
+| pthread   | Pthread Program          |
+| openmp    | OpenMP Program           |
+
+
 Example usage: 
 python3 apply.py serial 5 1
 ```
