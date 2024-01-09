@@ -16,6 +16,7 @@
 
 ## Program hierarchy
 
+```
 ├── Makefile
 ├── README.md
 ├── apply.py -> apply CPP program with different purposes
@@ -34,7 +35,7 @@
 ├── serial.cpp
 ├── timer.py -> graphics generator based on time
 └── utils.cpp -> generic applyfilter function used by all filters
-
+```
 
 ## Converter usage:
 
