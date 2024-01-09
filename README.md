@@ -185,3 +185,5 @@ for best implementations
 [2] https://lodev.org/cgtutor/filtering.html
 
 [3] https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve2d.html
+
+[4] https://www.kaggle.com/datasets/arnaud58/landscape-pictures
