@@ -148,10 +148,10 @@ Usage: python3 timer.py <type> <cpp_bin> <number_of_images> <num_threads / procs
 
 | Type  | Description                                                                   |
 | :---: | :---------------------------------------------------------------------------: |
-| 1     | Basic analisys on different number of images on one implementation            |
-| 2     | Basic analisys on different number of filters on one implementation           |
-| 3     | Basic analisys on different number of images on all implementations           |
-| 4     | Basic analisys on different number of filters on all implementations          |
+| 1     | Basic analysis on different number of images on one implementation            |
+| 2     | Basic analysis on different number of filters on one implementation           |
+| 3     | Basic analysis on different number of images on all implementations           |
+| 4     | Basic analysis on different number of filters on all implementations          |
 | 5     | Run each best time for all implementations on different number of images      |
 | 6     | Run each best time for all implementations on different number of filters     |
 
